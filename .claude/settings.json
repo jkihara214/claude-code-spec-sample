@@ -1,0 +1,54 @@
+{
+  "env": {},
+  "permissions": {
+    "allow": [],
+    "deny": [
+      "Bash(sudo:*)",
+      "Bash(chmod 777 :*)",
+      "Bash(rm:*)",
+      "Bash(rmdir:*)",
+      "Bash(find :* -delete::*)",
+      "Bash(find :* -exec rm::*)",
+      "Bash(xargs rm:*)",
+      "Bash(git rm -r:*)",
+      "Bash(git config :*)",
+      "Bash(git push:*)",
+      "Bash(git commit:*)",
+      "Bash(git reset:*)",
+      "Bash(git rebase:*)",
+      "Read(.env*)",
+      "Read(id_ed25519*)",
+      "Read(id_rsa*)",
+      "Read(*.key)",
+      "Read(*.pem)",
+      "Write(.env*)",
+      "Write(id_ed25519*)",
+      "Write(id_rsa*)",
+      "Write(*.key)",
+      "Write(*.pem)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(nc:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npm remove:*)",
+      "Bash(psql:*)",
+      "Bash(mysql:*)",
+      "Bash(mongod:*)"
+    ]
+  },
+  "enableAllProjectMcpServers": false,
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Read|Edit|MultiEdit|Write|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/protect_sensitive_files.py"
+          }
+        ]
+      }
+    ]
+  },
+  "alwaysThinkingEnabled": true
+}
