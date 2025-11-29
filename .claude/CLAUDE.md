@@ -11,10 +11,11 @@
 
 - `docs/00-rules/` - 開発ルール・コーディング規約
 - `docs/01-requirements/` - 要件定義
-- `docs/02-architecture/` - アーキテクチャ設計
-- `docs/03-features/` - 機能仕様
-- `docs/04-api/` - API仕様
-- `docs/05-tests/` - テスト仕様
+- `docs/02-architecture/` - アーキテクチャ設計（基本設計）
+- `docs/03-ui-design/` - UI設計（基本設計）
+- `docs/04-api/` - API仕様（基本設計）
+- `docs/05-interactions/` - インタラクション仕様（詳細設計）
+- `docs/06-tests/` - テスト仕様
 
 詳細は `docs/README.md` を参照してください。
 
@@ -25,7 +26,8 @@
 1. **必ず関連ドキュメントを確認**
    - `docs/00-rules/` のコーディング規約に従う
    - `docs/01-requirements/` で要件を確認
-   - `docs/03-features/` で機能仕様を確認
+   - `docs/03-ui-design/` でUI仕様を確認
+   - `docs/05-interactions/` でインタラクション仕様を確認
 
 2. **アーキテクチャ原則の遵守**
    - `docs/02-architecture/` の設計方針に従う
@@ -36,7 +38,7 @@
    - 認証・認可要件を確認
 
 4. **テストの実装**
-   - `docs/05-tests/` のテスト戦略に従う
+   - `docs/06-tests/` のテスト戦略に従う
    - 必要なテストケースをカバー
 
 ### 図表・画面設計作成時
@@ -53,7 +55,7 @@
 - **必ず** `docs/00-rules/screen-design-rules.md` の画面設計ルールに従う
 - draw.io形式（`.drawio`）で作成
 - PNG形式（`.png`）でエクスポート（200%ズーム）
-- `docs/03-features/screens/` フォルダに配置
+- `docs/03-ui-design/screens/` フォルダに配置
 
 ### ドキュメント参照の優先順位
 
@@ -62,30 +64,32 @@
 1. `00-rules/` - プロジェクト全体のルールを理解
 2. `01-requirements/` - 実装する機能の要件を確認
 3. `02-architecture/` - 技術的な制約と設計方針を確認
-4. `03-features/` または `04-api/` - 詳細な仕様を確認
-5. `05-tests/` - テスト要件を確認
+4. `03-ui-design/` または `04-api/` - 基本設計の仕様を確認
+5. `05-interactions/` - 詳細設計（UI×API連携）を確認
+6. `06-tests/` - テスト要件を確認
 
 ## 作業フロー
 
 ### 新機能実装時
 
 1. `docs/01-requirements/` で要件を確認
-2. `docs/03-features/` または `docs/04-api/` で詳細仕様を確認
-3. `docs/00-rules/` のコーディング規約を遵守して実装
-4. `docs/05-tests/` に基づいてテストを作成
-5. 実装とドキュメントの整合性を確認
+2. `docs/03-ui-design/` または `docs/04-api/` で基本設計を確認
+3. `docs/05-interactions/` で詳細設計を確認
+4. `docs/00-rules/` のコーディング規約を遵守して実装
+5. `docs/06-tests/` に基づいてテストを作成
+6. 実装とドキュメントの整合性を確認
 
 ### バグ修正時
 
-1. 関連する機能の `docs/03-features/` を確認
+1. 関連する機能の `docs/03-ui-design/` と `docs/05-interactions/` を確認
 2. `docs/00-rules/` のコーディング規約を遵守して修正
-3. `docs/05-tests/` に基づいて回帰テストを実施
+3. `docs/06-tests/` に基づいて回帰テストを実施
 
 ### リファクタリング時
 
 1. `docs/02-architecture/` の設計方針を確認
 2. `docs/00-rules/` のコーディング規約に従う
-3. 既存の機能仕様 `docs/03-features/` との整合性を保つ
+3. 既存の仕様 `docs/03-ui-design/` および `docs/05-interactions/` との整合性を保つ
 4. テストが通ることを確認
 
 ## 注意事項
