@@ -91,7 +91,7 @@
 
 | ファイル名 | 役割 | 必須/任意 |
 |-----------|------|-----------|
-| README.md | 機能概要、データモデル、API一覧、実装ステータス | 必須 |
+| README.md | 機能概要、データモデル、実装ステータス | 必須 |
 | ui-specification.md | UI設計（レイアウト、コンポーネント、バリデーションルール） | 必須 |
 
 **05-interactions/ 配下:**
@@ -150,7 +150,7 @@ cp docs/03-ui-design/ui-specification-template.md \
 ```
 
 #### ステップ4: README.mdの作成
-画面の概要、使用するAPIなどを記載（03-ui-design配下）
+画面の概要、データモデルなどを記載（03-ui-design配下）
 
 #### ステップ5: 各仕様書の記入
 テンプレートに従って詳細を記入（UI仕様 → API仕様 → インタラクション仕様の順で作成推奨）
@@ -183,12 +183,7 @@ cp docs/03-ui-design/ui-specification-template.md \
 ## 3. データモデル
 使用するエンティティとその関係
 
-## 4. 使用API
-| エンドポイント | メソッド | 用途 |
-|--------------|---------|------|
-| /api/users   | GET     | ユーザ一覧取得 |
-
-## 5. 実装ステータス
+## 4. 実装ステータス
 - [ ] UI実装
 - [ ] API連携
 - [ ] テスト作成
@@ -289,7 +284,6 @@ sequenceDiagram
 - [ ] ui-specification.mdが存在する（03-ui-design配下）
 - [ ] interaction-specification.mdが存在する（05-interactions配下）
 - [ ] 要件IDとの紐付けがある
-- [ ] API仕様へのリンクがある
 
 #### 内容の妥当性
 - [ ] 要件を満たしている
