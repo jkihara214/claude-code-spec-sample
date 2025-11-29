@@ -41,41 +41,43 @@
 
 ### 命名規則
 
+ディレクトリ名は [画面設計書](../02-architecture/screen-design.md) の英語表記に従います。
+
 #### 機能カテゴリディレクトリ
 ```
-形式: {機能カテゴリ名}/
-命名: ハイフン区切りの英小文字（kebab-case）
-例: user-management/, authentication/, dashboard/
+形式: {機能名（英語）}/
+参照: 画面設計書の「機能名（英語）」列
+例: user-management/, asset-management/, lending-management/, inventory/, reports/, admin/, notifications/, common/
 ```
 
 #### 画面ディレクトリ
 ```
-形式: {機能カテゴリ}/{画面名}/
-命名: ハイフン区切りの英小文字（kebab-case）
-例: user-management/user-list/, user-management/user-detail/
+形式: {機能名（英語）}/{画面名（英語）}/
+参照: 画面設計書の「画面名（英語）」列
+例: user-management/login-screen/, asset-management/asset-search-screen/, lending-management/lending-application-screen/
 ```
 
 #### 命名の原則
-- **明確性**: 機能や画面の内容が一目でわかる名前
+- **画面設計書に準拠**: 必ず [画面設計書](../02-architecture/screen-design.md) の英語表記を使用
 - **一貫性**: プロジェクト全体で統一された命名パターン
-- **簡潔性**: 必要十分な長さ（過度に長い名前は避ける）
+- **トレーサビリティ**: 画面設計書との対応が明確
 
 ### ディレクトリ階層
 
 ```
 03-ui-design/
-├── {機能カテゴリ}/              # レベル1: 機能グループ
-│   ├── {画面名}/                # レベル2: 個別画面
+├── {機能名（英語）}/            # レベル1: 機能グループ（例: asset-management）
+│   ├── {画面名（英語）}/        # レベル2: 個別画面（例: asset-search-screen）
 │   │   ├── README.md           # 機能概要
 │   │   └── ui-specification.md  # UI仕様
 │   └── {別の画面}/
 │       └── ...
-└── {別の機能カテゴリ}/
+└── {別の機能}/
     └── ...
 
 05-interactions/
-├── {機能カテゴリ}/              # 03-ui-design と同じ構造
-│   ├── {画面名}/
+├── {機能名（英語）}/            # 03-ui-design と同じ構造
+│   ├── {画面名（英語）}/
 │   │   └── interaction-specification.md # インタラクション仕様
 │   └── ...
 └── ...
@@ -104,32 +106,47 @@
 
 ### 新規機能追加時
 
+#### ステップ0: 画面設計書の確認
+[画面設計書](../02-architecture/screen-design.md) を参照し、機能名（英語）と画面名（英語）を確認します。
+
 #### ステップ1: 機能カテゴリの決定
 ```bash
 # 既存カテゴリがある場合
 既存のカテゴリディレクトリを使用
 
-# 新規カテゴリが必要な場合
-mkdir docs/03-ui-design/{機能カテゴリ名}
-mkdir docs/05-interactions/{機能カテゴリ名}
+# 新規カテゴリが必要な場合（画面設計書の「機能名（英語）」を使用）
+mkdir docs/03-ui-design/{機能名（英語）}
+mkdir docs/05-interactions/{機能名（英語）}
+
+# 例: 資産管理機能の場合
+mkdir docs/03-ui-design/asset-management
+mkdir docs/05-interactions/asset-management
 ```
 
 #### ステップ2: 画面ディレクトリの作成
 ```bash
-# 画面ごとのディレクトリを作成
-mkdir docs/03-ui-design/{機能カテゴリ名}/{画面名}
-mkdir docs/05-interactions/{機能カテゴリ名}/{画面名}
+# 画面ごとのディレクトリを作成（画面設計書の「画面名（英語）」を使用）
+mkdir docs/03-ui-design/{機能名（英語）}/{画面名（英語）}
+mkdir docs/05-interactions/{機能名（英語）}/{画面名（英語）}
+
+# 例: 資産検索画面の場合
+mkdir docs/03-ui-design/asset-management/asset-search-screen
+mkdir docs/05-interactions/asset-management/asset-search-screen
 ```
 
 #### ステップ3: テンプレートからファイルをコピー
 ```bash
 # UI仕様書テンプレートをコピー
 cp docs/03-ui-design/ui-specification-template.md \
-   docs/03-ui-design/{機能カテゴリ}/{画面名}/ui-specification.md
+   docs/03-ui-design/{機能名（英語）}/{画面名（英語）}/ui-specification.md
 
 # インタラクション仕様書テンプレートをコピー
 cp docs/05-interactions/interaction-specification-template.md \
-   docs/05-interactions/{機能カテゴリ}/{画面名}/interaction-specification.md
+   docs/05-interactions/{機能名（英語）}/{画面名（英語）}/interaction-specification.md
+
+# 例: 資産検索画面の場合
+cp docs/03-ui-design/ui-specification-template.md \
+   docs/03-ui-design/asset-management/asset-search-screen/ui-specification.md
 ```
 
 #### ステップ4: README.mdの作成
@@ -324,6 +341,7 @@ sequenceDiagram
 
 ## 参考リンク
 
+- [画面設計書](../02-architecture/screen-design.md) - 機能名（英語）・画面名（英語）の参照元
 - [UI共通仕様書](./ui-common-specification.md)
 - [UI仕様書テンプレート](./ui-specification-template.md)
 - [インタラクション仕様書テンプレート](../05-interactions/interaction-specification-template.md)

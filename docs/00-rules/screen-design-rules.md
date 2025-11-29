@@ -26,7 +26,7 @@
 
 1. **編集可能性**: draw.ioファイル（`.drawio`）を元ファイルとして保持
 2. **表示用**: PNG画像（`.png`）をマークダウンで表示
-3. **配置場所**: `docs/03-features/screens/`ディレクトリに格納
+3. **配置場所**: `docs/03-ui-design/screens/`ディレクトリに格納
 4. **バージョン管理**: 両形式（.drawioと.png）をGitで管理
 
 ## ディレクトリ構造
@@ -35,7 +35,7 @@
 
 ```
 docs/
-├── 03-features/
+├── 03-ui-design/
 │   ├── screens/                # 画面設計ファイル格納場所
 │   │   ├── wireframes/         # ワイヤーフレーム
 │   │   │   ├── login.drawio
@@ -107,7 +107,7 @@ docs/
 
 ```bash
 # 該当ディレクトリに移動
-cd docs/03-features/screens/wireframes/  # または mockups/
+cd docs/03-ui-design/screens/wireframes/  # または mockups/
 
 # draw.ioで新規作成
 # ブラウザで https://app.diagrams.net/ を開く

@@ -639,6 +639,6 @@ graph TB
 
 - [機能要件](functional-requirements.md) - ユースケースを実現する機能
 - [ユーザーストーリー](user-stories.md) - より細分化されたユーザー視点の要求
-- [../03-features/](../03-features/) - ユースケースを実現する詳細仕様
-- [../05-tests/](../05-tests/) - ユースケースを検証するテストシナリオ
+- [../03-ui-design/](../03-ui-design/) - ユースケースを実現するUI設計
+- [../06-tests/](../06-tests/) - ユースケースを検証するテストシナリオ
 

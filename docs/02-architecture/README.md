@@ -4,6 +4,7 @@
 
 - [概要](#概要)
 - [ドキュメント構成](#ドキュメント構成)
+  - [screen-design.md](#screen-designmd)
   - [system-architecture.md](#system-architecturemd)
   - [technology-stack.md](#technology-stackmd)
   - [database-design.md](#database-designmd)
@@ -25,6 +26,17 @@
 アーキテクチャ設計は、要件定義で定義された機能要件・非機能要件を満たすための技術的な実現方法を定義します。
 
 ## ドキュメント構成
+
+### [screen-design.md](screen-design.md)
+**画面設計**
+
+システムの画面一覧と画面遷移を定義します。
+
+含まれる内容:
+- 画面一覧（画面ID、日本語名、英語名、アクセス権限）
+- 画面遷移図
+- 命名規則
+- `03-ui-design` のディレクトリ構成ガイド
 
 ### [system-architecture.md](system-architecture.md)
 **システムアーキテクチャ**
@@ -122,10 +134,11 @@
 
 1. **technology-stack.md** - 使用する技術を先に決定
 2. **system-architecture.md** - システム全体構成を設計
-3. **database-design.md** - データモデルを設計
-4. **infrastructure.md** - インフラ構成を設計
-5. **security-architecture.md** - セキュリティ設計を組み込む
-6. **performance-design.md** - パフォーマンス最適化戦略を策定
+3. **screen-design.md** - 画面一覧と画面遷移を設計
+4. **database-design.md** - データモデルを設計
+5. **infrastructure.md** - インフラ構成を設計
+6. **security-architecture.md** - セキュリティ設計を組み込む
+7. **performance-design.md** - パフォーマンス最適化戦略を策定
 
 **重要**: 各ドキュメントは相互に関連しているため、反復的に見直しと更新を行ってください。
 
@@ -134,9 +147,10 @@
 - **00-rules/** - アーキテクチャ設計のルールとベストプラクティスを参照
 - **01-requirements/** - 機能要件・非機能要件を満たすアーキテクチャを設計
   - 特に非機能要件（パフォーマンス、セキュリティ、可用性）が重要
-- **03-features/** - 各機能の詳細実装に反映
+- **03-ui-design/** - 各画面のUI仕様に反映
 - **04-api/** - API設計の基盤となる
-- **05-tests/** - アーキテクチャ観点でのテスト要件を導出
+- **05-interactions/** - UIとAPIのインタラクション仕様に反映
+- **06-tests/** - アーキテクチャ観点でのテスト要件を導出
 
 ## 記述時の注意点
 
