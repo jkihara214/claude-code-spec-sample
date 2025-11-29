@@ -489,5 +489,5 @@
 - [機能要件](functional-requirements.md) - 本非機能要件が適用される機能
 - [制約事項](constraints.md) - 非機能要件に影響する制約
 - [../02-architecture/](../02-architecture/) - 非機能要件を満たすアーキテクチャ設計
-- [../05-tests/](../05-tests/) - 非機能要件を検証するテスト仕様
+- [../06-tests/](../06-tests/) - 非機能要件を検証するテスト仕様
 

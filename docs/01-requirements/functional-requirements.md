@@ -598,6 +598,6 @@ IoTタグによる自動位置追跡・棚卸し機能
 - [ユースケース](use-cases.md) - 各機能の具体的な利用シナリオ
 - [ユーザーストーリー](user-stories.md) - ユーザー視点での機能要求
 - [非機能要件](non-functional-requirements.md) - 機能の品質要件
-- [../03-features/](../03-features/) - 各機能の詳細仕様
+- [../03-ui-design/](../03-ui-design/) - 各機能のUI設計
 - [../04-api/](../04-api/) - 機能を実現するAPI仕様
 

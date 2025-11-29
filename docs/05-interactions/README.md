@@ -73,7 +73,7 @@
 
 - [UI仕様書](../03-ui-design/) - 画面設計（基本設計）
 - [API仕様書](../04-api/) - API設計（基本設計）
-- [UI仕様書作成ガイド](../03-ui-design/feature-guide.md) - 作成手順と命名規則
+- [UI仕様書作成ガイド](../03-ui-design/ui-design-guide.md) - 作成手順と命名規則
 - [インタラクション仕様書テンプレート](./interaction-specification-template.md) - テンプレート
 
 ---
