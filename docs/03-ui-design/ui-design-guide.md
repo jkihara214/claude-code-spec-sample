@@ -11,9 +11,7 @@
   - [新規機能追加時](#新規機能追加時)
   - [既存機能修正時](#既存機能修正時)
 - [ドキュメント作成ルール](#ドキュメント作成ルール)
-  - [README.md](#readmemd)
   - [ui-specification.md](#ui-specificationmd)
-  - [interaction-specification.md](#interaction-specificationmd)
 - [記述のベストプラクティス](#記述のベストプラクティス)
 - [レビューチェックリスト](#レビューチェックリスト)
 - [よくある質問](#よくある質問)
@@ -33,7 +31,6 @@
 
 **関連ディレクトリ:**
 - `docs/03-ui-design/` - UI仕様書（基本設計）
-- `docs/05-interactions/` - インタラクション仕様書（詳細設計）
 
 ---
 
@@ -50,11 +47,11 @@
 例: user-management/, asset-management/, lending-management/, inventory/, reports/, admin/, notifications/, common/
 ```
 
-#### 画面ディレクトリ
+#### 画面ファイル
 ```
-形式: {機能名（英語）}/{画面名（英語）}/
+形式: {機能名（英語）}/{画面名（英語）}-ui-specification.md
 参照: 画面設計書の「画面名（英語）」列
-例: user-management/login-screen/, asset-management/asset-search-screen/, lending-management/lending-application-screen/
+例: user-management/login-screen-ui-specification.md, asset-management/asset-search-screen-ui-specification.md
 ```
 
 #### 命名の原則
@@ -66,39 +63,26 @@
 
 ```
 03-ui-design/
-├── {機能名（英語）}/            # レベル1: 機能グループ（例: asset-management）
-│   ├── {画面名（英語）}/        # レベル2: 個別画面（例: asset-search-screen）
-│   │   ├── README.md           # 機能概要
-│   │   └── ui-specification.md  # UI仕様
-│   └── {別の画面}/
-│       └── ...
-└── {別の機能}/
-    └── ...
-
-05-interactions/
-├── {機能名（英語）}/            # 03-ui-design と同じ構造
-│   ├── {画面名（英語）}/
-│   │   └── interaction-specification.md # インタラクション仕様
+├── {機能名（英語）}/                              # 機能グループ（例: asset-management）
+│   ├── {画面名（英語）}-ui-specification.md       # UI仕様（例: asset-search-screen-ui-specification.md）
+│   └── {別の画面名}-ui-specification.md
+├── {別の機能}/
 │   └── ...
-└── ...
+├── screens/                                       # ワイヤーフレーム画像
+├── ui-common-specification.md                     # 共通UI仕様
+├── ui-design-guide.md                             # 本ガイド
+└── ui-specification-template.md                   # テンプレート
 ```
 
 ### ファイル構成
 
-各画面ディレクトリには、以下のファイルを配置します：
+各機能ディレクトリには、画面ごとにUI仕様書ファイルを配置します：
 
-**03-ui-design/ 配下:**
-
-| ファイル名 | 役割 | 必須/任意 |
-|-----------|------|-----------|
-| README.md | 機能概要、データモデル、API一覧、実装ステータス | 必須 |
-| ui-specification.md | UI設計（レイアウト、コンポーネント、バリデーションルール） | 必須 |
-
-**05-interactions/ 配下:**
+**03-ui-design/{機能名}/ 配下:**
 
 | ファイル名 | 役割 | 必須/任意 |
 |-----------|------|-----------|
-| interaction-specification.md | 処理フロー、API連携、状態管理、エラーハンドリング | 必須 |
+| {画面名}-ui-specification.md | UI設計（レイアウト、コンポーネント、バリデーションルール） | 必須 |
 
 ---
 
@@ -116,44 +100,24 @@
 
 # 新規カテゴリが必要な場合（画面設計書の「機能名（英語）」を使用）
 mkdir docs/03-ui-design/{機能名（英語）}
-mkdir docs/05-interactions/{機能名（英語）}
 
 # 例: 資産管理機能の場合
 mkdir docs/03-ui-design/asset-management
-mkdir docs/05-interactions/asset-management
 ```
 
-#### ステップ2: 画面ディレクトリの作成
+#### ステップ2: テンプレートからファイルをコピー
 ```bash
-# 画面ごとのディレクトリを作成（画面設計書の「画面名（英語）」を使用）
-mkdir docs/03-ui-design/{機能名（英語）}/{画面名（英語）}
-mkdir docs/05-interactions/{機能名（英語）}/{画面名（英語）}
-
-# 例: 資産検索画面の場合
-mkdir docs/03-ui-design/asset-management/asset-search-screen
-mkdir docs/05-interactions/asset-management/asset-search-screen
-```
-
-#### ステップ3: テンプレートからファイルをコピー
-```bash
-# UI仕様書テンプレートをコピー
+# UI仕様書テンプレートをコピー（画面設計書の「画面名（英語）」を使用）
 cp docs/03-ui-design/ui-specification-template.md \
-   docs/03-ui-design/{機能名（英語）}/{画面名（英語）}/ui-specification.md
-
-# インタラクション仕様書テンプレートをコピー
-cp docs/05-interactions/interaction-specification-template.md \
-   docs/05-interactions/{機能名（英語）}/{画面名（英語）}/interaction-specification.md
+   docs/03-ui-design/{機能名（英語）}/{画面名（英語）}-ui-specification.md
 
 # 例: 資産検索画面の場合
 cp docs/03-ui-design/ui-specification-template.md \
-   docs/03-ui-design/asset-management/asset-search-screen/ui-specification.md
+   docs/03-ui-design/asset-management/asset-search-screen-ui-specification.md
 ```
 
-#### ステップ4: README.mdの作成
-画面の概要、使用するAPIなどを記載（03-ui-design配下）
-
-#### ステップ5: 各仕様書の記入
-テンプレートに従って詳細を記入（UI仕様 → API仕様 → インタラクション仕様の順で作成推奨）
+#### ステップ3: 仕様書の記入
+テンプレートに従って詳細を記入
 
 ### 既存機能修正時
 
@@ -166,33 +130,6 @@ cp docs/03-ui-design/ui-specification-template.md \
 ---
 
 ## ドキュメント作成ルール
-
-### README.md
-
-#### 必須セクション
-```markdown
-# {画面名}
-
-## 1. 概要
-画面の目的と役割を簡潔に記述
-
-## 2. 機能要件
-- 対応する要件ID: REQ-XXX
-- ユースケース
-
-## 3. データモデル
-使用するエンティティとその関係
-
-## 4. 使用API
-| エンドポイント | メソッド | 用途 |
-|--------------|---------|------|
-| /api/users   | GET     | ユーザ一覧取得 |
-
-## 5. 実装ステータス
-- [ ] UI実装
-- [ ] API連携
-- [ ] テスト作成
-```
 
 ### ui-specification.md
 
@@ -211,30 +148,6 @@ cp docs/03-ui-design/ui-specification-template.md \
 
 ## 4. レスポンシブ対応
 ブレイクポイントごとの表示
-```
-
-### interaction-specification.md
-
-**配置場所:** `docs/05-interactions/{機能カテゴリ}/{画面名}/`
-
-#### 必須セクション
-```markdown
-# インタラクション仕様書 - {画面名}
-
-## 1. 使用するAPI一覧
-画面で使用するAPIの一覧
-
-## 2. 処理フロー
-メインの処理の流れ
-
-## 3. API呼び出しマッピング
-UI操作とAPI呼び出しの対応
-
-## 4. エラーハンドリング
-エラー時の処理
-
-## 5. 状態管理（必要な場合）
-複雑な状態管理が必要な場合のみ
 ```
 
 ---
@@ -285,11 +198,8 @@ sequenceDiagram
 ### UI仕様書レビュー時の確認項目
 
 #### 必須項目の確認
-- [ ] README.mdが存在する（03-ui-design配下）
 - [ ] ui-specification.mdが存在する（03-ui-design配下）
-- [ ] interaction-specification.mdが存在する（05-interactions配下）
 - [ ] 要件IDとの紐付けがある
-- [ ] API仕様へのリンクがある
 
 #### 内容の妥当性
 - [ ] 要件を満たしている
@@ -309,7 +219,7 @@ sequenceDiagram
 ## よくある質問
 
 ### Q1: 1つの画面に複数の状態がある場合は？
-**A:** ui-specification.mdに各状態を別セクションとして記載し、interaction-specification.mdで状態遷移を定義します。
+**A:** ui-specification.mdに各状態を別セクションとして記載します。
 
 ### Q2: 共通コンポーネントの仕様はどこに書く？
 **A:** ui-common-specification.mdに記載し、個別の画面仕様からは参照のみとします。
@@ -344,6 +254,5 @@ sequenceDiagram
 - [画面設計書](../02-architecture/screen-design.md) - 機能名（英語）・画面名（英語）の参照元
 - [UI共通仕様書](./ui-common-specification.md)
 - [UI仕様書テンプレート](./ui-specification-template.md)
-- [インタラクション仕様書テンプレート](../05-interactions/interaction-specification-template.md)
 - [Mermaid図表記述ルール](../00-rules/mermaid-diagram-rules.md)
 - [画面設計ルール](../00-rules/screen-design-rules.md)
