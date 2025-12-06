@@ -16,9 +16,9 @@
 ```
 
 設計補助ファイルの例:
-- `_guidelines/` - ドキュメント作成ガイドライン
+- `_templates/` - ドキュメント作成テンプレート
 - `_interview/` - ヒアリング用質問・回答
-- `_business-requirements.md` - ビジネス要件のガイドライン
+- `_business-requirements.md` - ビジネス要件のテンプレート
 
 ## プロジェクト概要
 
