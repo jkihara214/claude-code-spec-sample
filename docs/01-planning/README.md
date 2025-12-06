@@ -16,20 +16,29 @@
 ├── README.md                    # このファイル
 ├── _templates/                  # ドキュメント作成テンプレート（設計補助）
 │   ├── _business-requirements.md
-│   ├── _business-flow.md
 │   ├── _functional-requirements.md
 │   ├── _non-functional-requirements.md
 │   ├── _constraints.md
-│   └── _use-cases.md
+│   ├── _use-cases/
+│   │   ├── _use-cases.md        # ユースケース一覧テンプレート
+│   │   └── _use-case.md         # 個別ユースケーステンプレート
+│   └── _user-stories/           # [任意]
+│       ├── _user-stories.md     # ユーザーストーリー一覧テンプレート
+│       └── _user-story.md       # 個別ユーザーストーリーテンプレート
 ├── _interview/                  # ヒアリング用質問・回答（設計補助）
 │   └── _00-basic.md             # 基本ヒアリング
 ├── business-requirements.md     # ビジネス要件
-├── business-flow.md             # 業務フロー図
 ├── functional-requirements.md   # 機能要件
 ├── non-functional-requirements.md # 非機能要件
 ├── constraints.md               # 制約事項
 ├── use-cases/                   # ユースケース
+│   ├── use-cases.md
+│   ├── UC001-login.md
+│   └── ...
 └── user-stories/                # [任意] ユーザーストーリー
+    ├── user-stories.md
+    ├── US001-login.md
+    └── ...
 ```
 
 ## 各ファイルの説明
@@ -41,11 +50,15 @@ Claude Codeがドキュメントを生成する際に参照し、出力の一貫
 
 配置するファイル:
 - `_business-requirements.md` - ビジネス要件のテンプレート
-- `_business-flow.md` - 業務フロー図のテンプレート
 - `_functional-requirements.md` - 機能要件のテンプレート
 - `_non-functional-requirements.md` - 非機能要件のテンプレート
 - `_constraints.md` - 制約事項のテンプレート
-- `_use-cases.md` - ユースケースのテンプレート
+- `_use-cases/` - ユースケースのテンプレート
+  - `_use-cases.md` - ユースケース一覧
+  - `_use-case.md` - 個別ユースケース
+- `_user-stories/` - ユーザーストーリーのテンプレート [任意]
+  - `_user-stories.md` - ユーザーストーリー一覧
+  - `_user-story.md` - 個別ユーザーストーリー
 
 注意:
 - `_` プレフィックスは設計補助ファイルを示す
@@ -70,24 +83,14 @@ Claude Codeがドキュメントを生成する際に参照し、出力の一貫
 - ステークホルダー一覧
 - プロジェクトスコープ
 
-### business-flow.md - 業務フロー図
-
-業務プロセス全体の流れを可視化します。
-
-記載内容:
-- 現行業務フロー（As-Is）
-- 新業務フロー（To-Be）
-- 業務とシステムの関係
-
 ### functional-requirements.md - 機能要件
 
 システムが提供すべき機能の一覧を定義します。
 
 記載内容:
-- 機能一覧表
-- 各機能の概要説明
-- 機能間の依存関係
-- 優先度
+- アクター定義
+- 機能一覧表（概要、権限、優先度、フェーズ）
+- ビジネスルール
 
 ### non-functional-requirements.md - 非機能要件
 
@@ -97,9 +100,11 @@ Claude Codeがドキュメントを生成する際に参照し、出力の一貫
 - 可用性（稼働率、障害復旧時間）
 - 性能・拡張性（応答時間、同時接続数）
 - 運用・保守性（バックアップ、監視）
-- 移行性（データ移行、システム移行）
-- セキュリティ（認証、暗号化、アクセス制御）
+- セキュリティ（認証、暗号化、権限管理）
 - システム環境（対応ブラウザ、OS）
+- アクセシビリティ
+- 国際化・多言語対応
+- 監査・コンプライアンス
 
 ### constraints.md - 制約事項
 
@@ -117,16 +122,23 @@ Claude Codeがドキュメントを生成する際に参照し、出力の一貫
 アクターとシステムの相互作用を記述します。
 
 配置するファイル:
-- 機能単位またはアクター単位でファイルを作成
-- 例: `UC001-login.md`, `UC002-order.md`
+- `use-cases.md` - ユースケース一覧
+- `UC{機能ID下3桁}-{機能名}.md` - 個別ユースケース
+- 例: `UC001-login.md`, `UC010-order-create.md`
 
 ### user-stories/ - ユーザーストーリー [任意]
 
 ユーザー視点での機能記述を行います。
+use-casesの代替または補完として使用します。
 
 配置するファイル:
-- 機能単位でファイルを作成
-- 「〜として、〜したい。なぜなら〜」形式で記述
+- `user-stories.md` - ユーザーストーリー一覧
+- `US{機能ID下3桁}-{機能名}.md` - 機能単位のユーザーストーリー
+- 例: `US001-login.md`, `US010-order-create.md`
+
+記述形式:
+- 「〜として、〜したい。なぜなら〜」形式
+- 受け入れ条件を併記
 
 ## ドキュメント作成の手順
 
@@ -178,7 +190,7 @@ Claude Codeがドキュメントを生成する際に参照し、出力の一貫
 | 2 | constraints.md | 制約を明確にしてから他を作成 |
 | 3 | functional-requirements.md | 機能一覧を定義 |
 | 4 | non-functional-requirements.md | 非機能要件を定義 |
-| 5 | business-flow.md | 業務フローを可視化 |
+| 5 | user-stories/ [任意] | ユーザー視点の要望を整理 |
 | 6 | use-cases/ | ユースケース詳細を作成 |
 
 ### プロンプト例
